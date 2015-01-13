@@ -1,0 +1,8 @@
+export NDK_SYSROOT=~/work/tools/android-ndk-r9d/platforms/android-9/arch-arm
+export PATH=$PATH:~/work/tools/android-ndk-r9d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/
+
+cd x264
+./configure --cross-prefix=arm-linux-androideabi- --sysroot="$NDK_SYSROOT" --host=arm-linux --enable-pic --enable-static --disable-cli
+./configure --cross-prefix=arm-linux-androideabi- --sysroot="$NDK_SYSROOT" --host=arm-linux --enable-pic --enable-static --disable-cli --disable-gpac --enable-strip
+./configure --cross-prefix=arm-linux-androideabi- --sysroot="$NDK_SYSROOT" --host=arm-linux --enable-pic --enable-strip --enable-static --disable-cli --extra-cflags="-march=armv7-a -mtune=cortex-a8 -mfloat-abi=softfp -mfpu=neon -D__ARM_ARCH_7__ -D__ARM_ARCH_7A__"
+make 
